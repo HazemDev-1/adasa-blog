@@ -1,23 +1,22 @@
-import { Link } from "react-router-dom";
-import postsData from "../data/posts.json";
+import { Link } from 'react-router-dom'
+import { usePosts } from '../hooks/usePosts'
 
 function Footer() {
-  const { siteInfo, categories } = postsData;
+  const state = usePosts()
+  const siteName = state.status === 'ready' ? state.data.siteInfo.name : 'عدسة'
 
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-col">
-          <h3>{siteInfo.name}</h3>
-          <p>{siteInfo.description}</p>
+          <h3>{siteName}</h3>
+          {state.status === 'ready' && <p>{state.data.siteInfo.description}</p>}
         </div>
 
         <div className="footer-col">
           <h4>التصنيفات</h4>
           <ul>
-            {categories.map((cat) => (
-              <li key={cat.name}>{cat.name}</li>
-            ))}
+            {state.status === 'ready' && state.data.categories.map((cat) => <li key={cat.name}>{cat.name}</li>)}
           </ul>
         </div>
 
@@ -35,10 +34,10 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>© 2026 {siteInfo.name}. جميع الحقوق محفوظة.</p>
+        <p>© 2026 {siteName}. جميع الحقوق محفوظة.</p>
       </div>
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

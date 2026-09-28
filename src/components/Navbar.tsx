@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 function Navbar() {
   return (
@@ -21,7 +21,7 @@ function Navbar() {
         </ul>
       </div>
     </nav>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

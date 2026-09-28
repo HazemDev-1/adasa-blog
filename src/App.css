@@ -641,3 +641,14 @@
     font-size: 0.9rem;
   }
 }
+
+
+/* Loading / error message shown while posts are fetched */
+.status-message {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 60px 16px;
+}
+.status-message.error {
+  color: #f87171;
+}
